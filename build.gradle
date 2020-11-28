@@ -54,7 +54,7 @@ if (System.getenv("KEY_STORE")) {
 }
 
 config.mod_version = "${config.mod_version}." + (System.getenv("BUILD_NUMBER") ?: "1")
-version = "${config.mc_version}-${version}"
+version = "${config.mc_version}-${config.mod_version}"
 println "Starting build of ${archivesBaseName}, Version: ${config.mod_version}"
 println "Using Forge: ${config.forge_version}, for Minecraft: ${config.mc_version}, with Mappings: ${config.mappings}"
 
@@ -115,8 +115,6 @@ processResources { task ->
         }
     }
 }
-
-version = "${config.mc_version}-${version}"
 
 jar {
     finalizedBy 'reobfJar'
